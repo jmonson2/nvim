@@ -8,13 +8,14 @@ return {
 
   {
     "mfussenegger/nvim-dap",
-    dependencies = { "leoluz/nvim-dap-go", "rcarriga/nvim-dap-ui" },
+    dependencies = { "leoluz/nvim-dap-go", "rcarriga/nvim-dap-ui", "mfussenegger/nvim-dap-python" },
     config = function()
       local dap = require("dap")
       local dapui = require("dapui")
 
       require("dapui").setup()
       require("dap-go").setup()
+      require("dap-python").setup()
       dap.adapters.gdb = {
         type = "executable",
         command = "gdb",
