@@ -16,21 +16,27 @@ return {
       require("dapui").setup()
       require("dap-go").setup()
       require("dap-python").setup()
+      -- gdb for Linux, lldb for OSX
       dap.adapters.gdb = {
         type = "executable",
         command = "gdb",
         args = { "-i", "dap" },
       }
+      dap.adapters.lldb = {
+        type = "executable",
+        command = "lldb-dap",
+      }
       dap.configurations.c = {
         {
-          name = "Launch",
-          type = "gdb",
+          name = "lldb dap",
+          type = "lldb",
           request = "launch",
           program = function()
             return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
           end,
           cwd = "${workspaceFolder}",
-          stopAtBeginningOfMainSubprogram = false,
+          stopOnEntry = false,
+          args = {},
         },
       }
       dap.listeners.before.attach.dapui_config = function()
