@@ -3,7 +3,8 @@ return {
   { "sainnhe/everforest" },
   { "EdenEast/nightfox.nvim" },
   { "rose-pine/neovim" },
+  { "sainnhe/sonokai" },
   { "LazyVim/LazyVim", opts = {
-    colorscheme = "everforest",
+    colorscheme = "gruvbox",
   } },
 }
