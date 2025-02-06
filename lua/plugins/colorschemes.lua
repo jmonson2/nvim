@@ -5,6 +5,6 @@ return {
   { "rose-pine/neovim" },
   { "sainnhe/sonokai" },
   { "LazyVim/LazyVim", opts = {
-    colorscheme = "gruvbox",
+    colorscheme = "everforest",
   } },
 }
