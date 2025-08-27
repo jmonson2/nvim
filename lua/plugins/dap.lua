@@ -12,10 +12,29 @@ return {
     config = function()
       local dap = require("dap")
       local dapui = require("dapui")
-
+      vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#E60000", bold = true })
+      vim.fn.sign_define("DapBreakpoint", {
+        text = "●",
+        texthl = "DapBreakpoint",
+        linehl = "",
+        numhl = "",
+      })
+      vim.fn.sign_define("DapBreakpointCondition", {
+        text = "●",
+        texthl = "DapBreakpoint",
+        linehl = "",
+        numhl = "",
+      })
+      vim.fn.sign_define("DapLogPoint", {
+        text = "◆",
+        texthl = "DapLogPoint",
+        linehl = "",
+        numhl = "",
+      })
+      require("dap").set_log_level("TRACE")
       require("dapui").setup()
       require("dap-go").setup()
-      require("dap-python").setup()
+      require("dap-python").setup("python3")
       -- gdb for Linux, lldb for OSX
       dap.adapters.gdb = {
         type = "executable",
@@ -39,6 +58,7 @@ return {
           args = {},
         },
       }
+
       dap.listeners.before.attach.dapui_config = function()
         dapui.open()
       end
